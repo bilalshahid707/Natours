@@ -2,8 +2,9 @@ const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const Tour = require('../models/tourModel');
 const Booking = require('../models/bookingModel.js')
+
 exports.getOverview = catchAsync(async (req, res) => {
-  const response = await fetch('http://127.0.0.1:3000/api/v1/tours');
+  const response = await fetch('/api/v1/tours');
   const jsonResponse = await response.json();
   const tours = await jsonResponse.data;
   res.status(200).render('overview', {
@@ -34,6 +35,5 @@ exports.getMe = catchAsync(async (req, res) => {
 
 exports.getMyTours = catchAsync(async(req,res,next)=>{
   const bookings = Booking.find({user:req.user.id})
-  console.log(req.session)
   res.status(200).render('bookings')
 })

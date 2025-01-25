@@ -15,9 +15,9 @@ mongoose.connect(DB,{
 
 const port = process.env.PORT  || 3000
 const server = app.listen(port,()=>{
-    // if (process.env.NODE_ENV="development"){
-    //     process.env.NODE_ENV="production"
-    // }
+    if (process.env.NODE_ENV="development"){
+        process.env.NODE_ENV="production"
+    }
     console.log(`listening request on port ${port}`)
 })
 

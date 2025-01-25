@@ -36,7 +36,7 @@ const sendErrorDev = (err, req, res) => {
   }
 };
 
-const sendErrorProd = (err, req,res) => {
+const sendErrorProd = (err, req, res) => {
   if (req.originalUrl.startsWith('/api')) {
     if (err.isOperational) {
       res.status(err.statusCode).json({
@@ -58,7 +58,6 @@ const sendErrorProd = (err, req,res) => {
       });
     } else {
       console.log('ERROR', err);
-
       res.status(err.statusCode).render('error', {
         msg: 'Please try again later',
       });
@@ -78,6 +77,6 @@ module.exports = (err, req, res, next) => {
     if (err.name === 'JsonWebTokenError') err = handleInvalidToken(err);
     if (err.name === 'TokenExpiredError') err = handleExpiredToken(err);
 
-    sendErrorProd(err,req, res);
+    sendErrorProd(err, req, res);
   }
 };

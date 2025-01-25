@@ -4,6 +4,7 @@ const AppError = require('../utils/appError');
 const factory = require('./handlerFactory');
 const multer = require('multer');
 const sharp = require('sharp');
+
 // Uploading User Images and multer configuration
 const storage = multer.memoryStorage();
 const multerFilter = (req, file, cb) => {
@@ -24,6 +25,7 @@ const filterObj = (obj, ...fields) => {
   });
   return newObj;
 };
+
 // Middlewares
 
 exports.getAllUsers = factory.getAll(User);

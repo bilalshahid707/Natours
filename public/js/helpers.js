@@ -5,7 +5,7 @@ export const login =async (email,password)=>{
     try{
         const response =  await axios({
             method:"POST",
-            url:"http://127.0.0.1:3000/api/v1/users/signin",
+            url:"/api/v1/users/signin",
             data:{
                 email,
                 password
@@ -26,7 +26,7 @@ export const logOut =async ()=>{
     try{
         const response =  await axios({
             method:"GET",
-            url:"http://127.0.0.1:3000/api/v1/users/signout",
+            url:"/api/v1/users/signout",
         })
         if(response.data.status === "success"){
             showAlert('success','Logged Out successfully')
@@ -41,7 +41,7 @@ export const updateSettings = async (data, type) => {
     try {
       const response = await axios({
         method: 'PATCH',
-        url: `http://127.0.0.1:3000/api/v1/users/${type}`,
+        url: `/api/v1/users/${type}`,
         data: data,
       });
       if (response.data.status === 'success') {
@@ -58,7 +58,7 @@ export const checkOut = async(id)=>{
     try {
         const response = await axios({
           method: 'GET',
-          url: `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${id}`,
+          url: `/api/v1/bookings/checkout-session/${id}`,
         });
         if (response.data.status === 'success') {
           location.assign(`${response.data.data.url}`)
